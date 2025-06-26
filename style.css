@@ -1,0 +1,202 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url(img/fondo.jpg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: sans-serif;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: minmax(60px, 1fr);
+  gap: 10px;
+  width: calc(100vw - 20px);
+  height: calc(100vh - 20px);
+  max-width: calc(100vw - 20px);
+  max-height: calc(100vh - 20px);
+  overflow: auto;
+  margin: 10px;
+  padding: 50px;
+}
+
+:root {
+  --bento-orange:   #f79761;
+  --bento-pink:     #f79cbb;
+  --bento-green:    #a1d1b0;
+  --bento-lightpink:#ecb6c0;
+  --bento-cream:    #f4e9e4;
+  --bento-gray:     #dedfd1;
+  --bento-yellow:   #fadf92;
+  --bento-red:      #f5725d;
+  --bento-darkred:  #f76f61;
+  --bento-lightyellow: #f7dda1;
+  --bento-lightgreen:  #c2d2bf;
+  --bento-beige:    #f6eeb3;
+  --bento-gold:     #f9cc6b;
+  --bento-dark:     #002f2f;
+  --bento-lightrose:#fcb6c6;
+  --bento-lightbeige:#f3d6a1;
+  --bento-blue:     #c6e6f2;
+}
+
+.box {
+  border-radius: 0;
+  background-color: #ccc;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(.4,2,.6,1);
+}
+
+/* Animación al pasar el cursor */
+.box:hover {
+  transform: scale(1.07);
+  z-index: 10;
+}
+
+/* Imagen decorativa centrada, por encima del color de fondo */
+.box1::before  { background: url("img/boxbg_1.png") center/contain no-repeat; }
+.box2::before  { background: url("img/boxbg_2.png") center/contain no-repeat; }
+.box3::before  { background: url("img/boxbg_3.png") center/contain no-repeat; }
+.box4::before  { background: url("img/boxbg_4.png") center/contain no-repeat; }
+.box5::before  { background: url("img/boxbg_5.png") center/contain no-repeat; }
+.box6::before  { background: url("img/boxbg_6.png") center/contain no-repeat; }
+.box7::before  { background: url("img/boxbg_1.png") center/contain no-repeat; }
+.box8::before  { background: url("img/boxbg_2.png") center/contain no-repeat; }
+.box9::before  { background: url("img/boxbg_3.png") center/contain no-repeat; }
+.box10::before { background: url("img/boxbg_4.png") center/contain no-repeat; }
+.box11::before { background: url("img/boxbg_5.png") center/contain no-repeat; }
+
+.box1::before,
+.box2::before,
+.box3::before,
+.box4::before,
+.box5::before,
+.box6::before,
+.box7::before,
+.box8::before,
+.box9::before,
+.box10::before,
+.box11::before {
+  background-size: cover;      /* Rellena el cuadrado */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat;
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Textura multiplicada, por encima de la imagen decorativa */
+.box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("img/textura.jpg") center/cover repeat;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: multiply;
+}
+
+.box > * {
+  position: relative;
+  z-index: 3;
+}
+
+/* Colores usando la paleta */
+.box1  { grid-column: span 2; background-color: var(--bento-orange); }
+.box2  { grid-column: span 2; background-color: var(--bento-pink); }
+.box3  { grid-column: span 3; grid-row: span 2; background-color: var(--bento-green); }
+.box4  { grid-column: span 1; background-color: var(--bento-lightpink); }
+.box5  { grid-column: span 2; background-color: var(--bento-cream); }
+.box6  { grid-column: span 1; background-color: var(--bento-gray); }
+.box7  { grid-column: span 2; grid-row: span 2; background-color: var(--bento-yellow); }
+.box8  { grid-column: span 2; grid-row: span 2; background-color: var(--bento-red); }
+.box9  { grid-column: span 1; background-color: var(--bento-darkred); }
+.box10 { grid-column: span 2; grid-row: span 2; background-color: var(--bento-lightyellow); }
+.box11 { grid-column: span 1; background-color: var(--bento-cream); }
+
+
+.box12 { grid-column: span 1; grid-row: span 2; background: #c2d2bf; }
+.box13 { grid-column: span 1; background: #f6eeb3; }
+.box14 { grid-column: span 2; background: #f9cc6b; }
+.box15 { grid-column: span 2; background: #002f2f; }
+.box16 { grid-column: span 1; background: #fcb6c6; }
+.box17 { grid-column: span 1; background: #f3d6a1; }
+.box18 { grid-column: span 1; background: #c6e6f2; }
+
+.marco {
+  position: fixed;
+  color: #222;
+  font-family: inherit;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1000;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: transparent;
+}
+
+.marco-top {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.2em;
+  width: 100vw;
+  background: transparent;
+}
+
+
+
+.marco-left,
+.marco-right {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 2.2em;
+  height: 100vh;
+  background: transparent;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.marco-left {
+  left: 0;
+}
+
+.marco-right {
+  right: 0;
+}
+
+.marco-left span,
+.marco-right span {
+  display: block;
+  animation: scroll-vertical-loop 20s linear infinite;
+  position: relative;
+  height: 200vh;
+  white-space: pre;
+  margin: 10px;
+}
+
+.marco-left {
+  transform: rotate(180deg);
+}
+
+@keyframes scroll-vertical-loop {
+  100% { transform: translateY(0); }
+  0% { transform: translateY(-50%); }
+}
