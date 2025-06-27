@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Freckle+Face&family=Oi&family=Peralta&family=Slackey&family=Walter+Turncoat&display=swap');
+
+.walter-turncoat-regular {
+  font-family: "Walter Turncoat", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.slackey-regular {
+  font-family: "Slackey", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.averia-libre-light {
+  font-family: "Averia Libre", system-ui;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.averia-libre-regular {
+  font-family: "Averia Libre", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.averia-libre-bold {
+  font-family: "Averia Libre", system-ui;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.averia-libre-light-italic {
+  font-family: "Averia Libre", system-ui;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.averia-libre-regular-italic {
+  font-family: "Averia Libre", system-ui;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.averia-libre-bold-italic {
+  font-family: "Averia Libre", system-ui;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.peralta-regular {
+  font-family: "Peralta", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.oi-regular {
+  font-family: "Oi", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.freckle-face-regular {
+  font-family: "Freckle Face", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
