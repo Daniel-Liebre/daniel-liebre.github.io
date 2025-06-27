@@ -211,13 +211,13 @@ body {
 }
 
 /* Colores usando la paleta */
-.box1  { grid-column: span 1; grid-row: span 4; background-color: var(--bento-cream); }
-.box2  { grid-column: span 2; grid-row: span 2; background-color: var(--bento-lightbeige); }
-.box3  { grid-column: span 4; grid-row: span 2; background-color: var(--bento-dark); }
-.box4  { grid-column: span 1; grid-row: span 2; background-color: var(--bento-lightpink); }
+.box1  { grid-column: span 1; grid-row: span 4; background-color: var(--bento-green); }
+.box2  { grid-column: span 2; grid-row: span 2; background-color: var(--bento-pink); }
+.box3  { grid-column: span 4; grid-row: span 2; background-color: var(--bento-lightbeige); }
+.box4  { grid-column: span 1; grid-row: span 2; background-color: var(--bento-gray); }
 .box5  { grid-column: span 2; grid-row: span 2; background-color: var(--bento-darkred); }
-.box6  { grid-column: span 2; grid-row: span 2; background-color: var(--bento-yellow); }
-.box7  { grid-column: span 1; grid-row: span 2; background-color: var(--bento-green); }
+.box6  { grid-column: span 2; grid-row: span 2; background-color: var(--bento-cream); }
+.box7  { grid-column: span 1; grid-row: span 2; background-color: var(--bento-blue); }
 
 .marco {
   position: fixed;
