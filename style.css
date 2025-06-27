@@ -97,7 +97,7 @@ body {
   z-index: 1000;
   display: none;
 }
-.marco-top { top: 0; }
+.marco-top { top: 10px; }
 .marco-bottom { padding:5px; bottom: 0; }
 .marco-top span, .marco-bottom span {
   display: block;
