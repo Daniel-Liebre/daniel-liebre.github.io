@@ -79,3 +79,6 @@ window.addEventListener('resize', () => {
   updateMarquees();
   enableTouchHoverOnBoxes();
 });
+window.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
