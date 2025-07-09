@@ -1,67 +1,123 @@
+/* ====== FUENTES DE GOOGLE ====== */
 @import url('https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Freckle+Face&family=Oi&family=Peralta&family=Slackey&family=Walter+Turncoat&display=swap');
 
-.walter-turncoat-regular {
+/* Google Fonts simplificadas */
+.walter {
   font-family: "Walter Turncoat", cursive;
   font-weight: 400;
-  font-style: normal;
 }
 
-.slackey-regular {
+.slackey {
   font-family: "Slackey", sans-serif;
   font-weight: 400;
-  font-style: normal;
 }
 
-.averia-libre-light {
+.averia-light {
   font-family: "Averia Libre", system-ui;
   font-weight: 300;
-  font-style: normal;
 }
 
-.averia-libre-regular {
+.averia-regular {
   font-family: "Averia Libre", system-ui;
   font-weight: 400;
-  font-style: normal;
 }
 
-.averia-libre-bold {
+.averia-bold {
   font-family: "Averia Libre", system-ui;
   font-weight: 700;
-  font-style: normal;
 }
 
-.averia-libre-light-italic {
+.averia-light-italic {
   font-family: "Averia Libre", system-ui;
   font-weight: 300;
   font-style: italic;
 }
 
-.averia-libre-regular-italic {
+.averia-regular-italic {
   font-family: "Averia Libre", system-ui;
   font-weight: 400;
   font-style: italic;
 }
 
-.averia-libre-bold-italic {
+.averia-bold-italic {
   font-family: "Averia Libre", system-ui;
   font-weight: 700;
   font-style: italic;
 }
 
-.peralta-regular {
+.peralta {
   font-family: "Peralta", serif;
   font-weight: 400;
-  font-style: normal;
 }
 
-.oi-regular {
+.oi {
   font-family: "Oi", serif;
   font-weight: 400;
-  font-style: normal;
 }
 
-.freckle-face-regular {
+.freckle {
   font-family: "Freckle Face", system-ui;
   font-weight: 400;
-  font-style: normal;
+}
+
+
+/* ====== FUENTES LOCALES ====== */
+@font-face {
+  font-family: "ADNautilus";
+  src: url("fonts/AD_Nautilus.ttf");
+}
+
+@font-face {
+  font-family: "Cupang";
+  src: url("fonts/cCupang.ttf");
+}
+
+@font-face {
+  font-family: "Cinta";
+  src: url("fonts/cinta.ttf");
+}
+
+@font-face {
+  font-family: "Comicate";
+  src: url("fonts/COMICATE.TTF");
+}
+
+@font-face {
+  font-family: "Glass";
+  src: url("fonts/Glass.ttf");
+}
+
+@font-face {
+  font-family: "HeavyHeap";
+  src: url("fonts/heavy heap rg.otf");
+}
+
+@font-face {
+  font-family: "HoneySplit";
+  src: url("fonts/Honey-I-spilt-Verdana.ttf");
+}
+
+@font-face {
+  font-family: "PlasticBeach";
+  src: url("fonts/Plastic Beach.ttf");
+}
+
+@font-face {
+  font-family: "Rochester";
+  src: url("fonts/Rochester Twee.ttf");
+}
+
+@font-face {
+  font-family: "TalesPain";
+  src: url("fonts/Tales Of Pain And Love.ttf");
+}
+
+@font-face {
+  font-family: "Temblores";
+  src: url("fonts/TEMBLORES.ttf");
+}
+
+@font-face {
+  font-family: "TragicBlur";
+  src: url("fonts/Tragic Blur.otf");
 }
