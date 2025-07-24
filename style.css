@@ -72,7 +72,7 @@ body {
     grid-row: auto !important;
   }
   /* Destacada va primera */
-  #destacada {
+  #main-title {
     grid-row: 1 !important;
     grid-column: 1 / span 2 !important;
   }
@@ -159,13 +159,14 @@ body {
   transition: transform 0.2s cubic-bezier(.4,2,.6,1);
 }
 
-/* Animación al pasar el cursor */
-.box:hover,
-.box.active {
+/* Animación al pasar el cursor solo si la box contiene un link
+.box:hover:has(a),
+.box.active:has(a) {
   transform: scale(1.07);
   z-index: 10;
-}
+} */
 
+/* Imagen decorativa centrada, por encima del color de fondo */
 /* Imagen decorativa centrada, por encima del color de fondo */
 .box1::before  { background: url("img/boxbg_9.png") center/contain no-repeat; }
 .box2::before  { background: url("img/boxbg_3.png") center/contain no-repeat; }
@@ -182,15 +183,28 @@ body {
 .box5::before,
 .box6::before,
 .box7::before {
-  background-size: cover;      /* Rellena el cuadrado */
-  background-position: center; /* Centra la imagen */
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 1;
+  opacity: 0.5;                   /* Opacidad inicial */
   pointer-events: none;
   z-index: 1;
+  transition: opacity 0.3s ease;  /* Suaviza el cambio de opacidad */
+}
+
+/* Efecto de zoom SOLO si la box contiene un link */
+.box:hover:has(a),
+.box.active:has(a) {
+  transform: scale(1.07);
+  z-index: 10;
+}
+
+/* Cambio de opacidad SIEMPRE que se pasa el cursor sobre cualquier box */
+.box:hover::before {
+  opacity: .8;
 }
 
 /* Textura multiplicada, por encima de la imagen decorativa */
@@ -199,7 +213,7 @@ body {
   position: absolute;
   inset: 0;
   background: url("img/textura.jpg") center/cover repeat;
-  opacity: 0.25;
+  opacity:0.8;
   pointer-events: none;
   z-index: 2;
   mix-blend-mode: multiply;
