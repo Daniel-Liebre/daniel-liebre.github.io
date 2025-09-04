@@ -1,3 +1,92 @@
+/* Box expandida: ocupa toda la grilla y anima el resto */
+.box {
+  transition: all 0.5s cubic-bezier(.4,2,.6,1), transform 0.5s cubic-bezier(.4,2,.6,1);
+}
+
+.box.expanded {
+  position: fixed !important;
+  top: 2.2em;
+  left: 2.2em;
+  right: 2.2em;
+  bottom: 2.2em;
+  width: auto !important;
+  height: auto !important;
+  min-width: unset !important;
+  min-height: unset !important;
+  max-width: unset !important;
+  max-height: unset !important;
+  margin: 0 !important;
+  grid-column: unset !important;
+  grid-row: unset !important;
+  z-index: 2001;
+  transform: scale(1) !important;
+  opacity: 1 !important;
+  box-shadow: 0 0 0 100vmax #fff8, 0 8px 32px #0004;
+  transition: all 0.5s cubic-bezier(.4,2,.6,1), transform 0.5s cubic-bezier(.4,2,.6,1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.box.expanded::before {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s;
+}
+.box.expanded::after {
+  opacity: 0.8 !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s;
+}
+
+.box.expanded > span,
+.box.expanded > a.expand-link {
+  display: none !important;
+}
+
+.box.collapsed {
+  transform: scale(0.7);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(.4,2,.6,1), transform 0.5s cubic-bezier(.4,2,.6,1);
+}
+
+@media (max-width: 600px), (orientation: portrait) {
+  .box.expanded {
+    position: fixed !important;
+    top: 2.2em;
+    left: 0;
+    right: 0;
+    bottom: 2.2em;
+    width: 100vw !important;
+    min-width: 100vw !important;
+    max-width: 100vw !important;
+    height: auto !important;
+    min-height: unset !important;
+    max-height: unset !important;
+    grid-column: unset !important;
+    grid-row: unset !important;
+    margin: 0 !important;
+    z-index: 2001;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .box.expanded::before {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  .box.expanded::after {
+    opacity: 0.8 !important;
+    pointer-events: none !important;
+  }
+  .box.expanded > span,
+  .box.expanded > a.expand-link {
+    display: none !important;
+  }
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,9 +95,9 @@
 
 body {
   background-image: url(img/fondo.jpg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   min-height: 100vh;
   font-family: sans-serif;
 }
@@ -17,12 +106,14 @@ body {
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-auto-rows: minmax(60px, 1fr);
-  gap: 10px;
+  /* Mantener proporción cuadrada: la altura depende del ancho y la cantidad de filas */
   width: calc(100vw - 20px);
-  height: calc(100vh - 20px);
   max-width: calc(100vw - 20px);
-  max-height: calc(100vh - 20px);
+  aspect-ratio: 7 / 4; /* 7 columnas, 4 filas (por ejemplo) */
+  height: auto;
+  max-height: 100vh;
+  grid-auto-rows: 1fr;
+  gap: 10px;
   overflow: auto;
   margin: 10px;
   padding: 50px;
@@ -32,6 +123,7 @@ body {
 @media (max-width: 1024px) {
   .bento-grid {
     grid-template-columns: repeat(4, 1fr);
+    aspect-ratio: 4 / 4; /* 4 columnas, 4 filas */
     padding: 20px;
   }
 }
@@ -41,9 +133,14 @@ body {
   body {
     padding: 0;
     overflow-x: hidden;
+    background-image: url(img/fondo.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
   }
   .bento-grid {
     grid-template-columns: repeat(2, 1fr);
+    aspect-ratio: unset;
     padding: 0;
     margin: 0;
     width: 100vw;
@@ -82,7 +179,7 @@ body {
     display: block !important;
     background: transparent !important;
     box-shadow: none !important;
-    z-index: 1000;
+    z-index: 4000;
   }
   .marco-top span, .marco-bottom span {
     background: transparent;
@@ -241,10 +338,10 @@ body {
   letter-spacing: 0.1em;
   white-space: nowrap;
   pointer-events: none;
-  z-index: 1000;
+  z-index: 4000;
   font-weight: bold;
   text-transform: uppercase;
-  background: transparent;
+  background: transparent !important;
 }
 
 .marco-top {
@@ -256,8 +353,6 @@ body {
   background: transparent;
 }
 
-
-
 .marco-left,
 .marco-right {
   position: fixed;
@@ -265,11 +360,11 @@ body {
   bottom: 0;
   width: 2.2em;
   height: 100vh;
-  background: transparent;
+  background: transparent !important;
   writing-mode: vertical-rl;
   text-orientation: mixed;
   pointer-events: none;
-  z-index: 1000;
+  z-index: 4000;
 }
 
 .marco-left {

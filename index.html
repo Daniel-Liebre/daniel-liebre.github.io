@@ -14,15 +14,88 @@
   <div class="marco marco-left"><span data-text="daniel liebre • ">daniel liebre • </span></div>
   <div class="marco marco-right"><span data-text="daniel liebre • ">daniel liebre • </span></div>
   <div class="bento-grid">
-    <div class="box box1"></div>
-    <div class="box box2"> <a href="#"> </a></div>
-    <div class="box box3" id="main-title"><img src="img/dsillon.png" alt="Daniel" height="100%"></div>
-    <div class="box box4"> <a href="#"> </a> </div>
-    <div class="box box5"> <a href="#"> </a> </div>
-    <div class="box box6" id="sketch-title"> </div>
-    <div class="box box7"> <a href="#"> </a></div>
+  <div class="box box1"></div>
+  <div class="box box2 expand-trigger" data-content="sobre-mi.html"><span>sobre mi</span><div class="dynamic-content"></div></div>
+  <div class="box box3" id="main-title"><img src="img/dsillon.png" alt="Daniel" height="100%"></div>
+  <div class="box box4 expand-trigger" data-content="web.html"><span>web</span><div class="dynamic-content"></div></div>
+  <div class="box box5 expand-trigger" data-content="diseno.html"><span>diseño</span><div class="dynamic-content"></div></div>
+  <div class="box box6 expand-trigger" id="sketch-title" data-content="p5.html"><span>p5</span><div class="dynamic-content"></div></div>
+  <div class="box box7 expand-trigger" data-content="musica.html"><span>musica</span><div class="dynamic-content"></div></div>
   </div>
+  <div id="close-expanded" style="display:none;position:fixed;top:20px;right:20px;z-index:3000;font-size:2em;cursor:pointer;background:#fff3;border-radius:1em;padding:0.2em 0.6em;">×</div>
   <script src="sketch.js"></script>
   <script src="main.js"></script>
+  <script>
+  // Expande la box al hacer click en el link
+  document.addEventListener('DOMContentLoaded', function() {
+    const grid = document.querySelector('.bento-grid');
+    const closeBtn = document.getElementById('close-expanded');
+    let expandedBox = null;
+    grid.addEventListener('click', function(e) {
+      const box = e.target.closest('.expand-trigger');
+      if(box && !box.classList.contains('expanded')) {
+        // Quitar expandido/collapsed de cualquier otra box
+        document.querySelectorAll('.box.expanded').forEach(b=>{
+          b.classList.remove('expanded');
+          // Oculta contenido dinámico
+          const dyn = b.querySelector('.dynamic-content');
+          if(dyn) dyn.innerHTML = '';
+          // Muestra el título
+          const span = b.querySelector('span');
+          if(span) span.style.display = '';
+        });
+        document.querySelectorAll('.box.collapsed').forEach(b=>b.classList.remove('collapsed'));
+        // Expandir la box y colapsar las demás
+        box.classList.add('expanded');
+        expandedBox = box;
+        document.querySelectorAll('.box').forEach(b=>{
+          if(b!==box) b.classList.add('collapsed');
+        });
+        closeBtn.style.display = 'block';
+        // Oculta el título
+        const span = box.querySelector('span');
+        if(span) span.style.display = 'none';
+        // Carga el contenido externo
+        const dyn = box.querySelector('.dynamic-content');
+        if(dyn && box.dataset.content) {
+          fetch('content/' + box.dataset.content)
+            .then(r=>r.text())
+            .then(html=>{ dyn.innerHTML = html; });
+        }
+        // Opcional: scroll al box
+        box.scrollIntoView({behavior:'smooth',block:'center'});
+      }
+    });
+    closeBtn.addEventListener('click', function() {
+      if(expandedBox) {
+        expandedBox.classList.remove('expanded');
+        // Oculta contenido dinámico
+        const dyn = expandedBox.querySelector('.dynamic-content');
+        if(dyn) dyn.innerHTML = '';
+        // Muestra el título
+        const span = expandedBox.querySelector('span');
+        if(span) span.style.display = '';
+      }
+      document.querySelectorAll('.box.collapsed').forEach(b=>b.classList.remove('collapsed'));
+      closeBtn.style.display = 'none';
+      expandedBox = null;
+    });
+    // Cerrar al hacer click fuera de la box expandida
+    document.addEventListener('mousedown', function(e) {
+      if(expandedBox && !expandedBox.contains(e.target) && e.target!==closeBtn) {
+        expandedBox.classList.remove('expanded');
+        // Oculta contenido dinámico
+        const dyn = expandedBox.querySelector('.dynamic-content');
+        if(dyn) dyn.innerHTML = '';
+        // Muestra el título
+        const span = expandedBox.querySelector('span');
+        if(span) span.style.display = '';
+        document.querySelectorAll('.box.collapsed').forEach(b=>b.classList.remove('collapsed'));
+        closeBtn.style.display = 'none';
+        expandedBox = null;
+      }
+    });
+  });
+  </script>
 </body>
 </html>
